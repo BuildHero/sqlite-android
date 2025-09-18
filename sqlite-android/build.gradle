@@ -45,6 +45,12 @@ android {
             path "src/main/jni/Android.mk"
         }
     }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
 }
 
 dependencies {
