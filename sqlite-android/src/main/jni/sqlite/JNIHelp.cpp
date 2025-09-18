@@ -195,8 +195,8 @@ int jniThrowIOException(C_JNIEnv* env, int errnum) {
 }
 
 const char* jniStrError(int errnum, char* buf, size_t buflen) {
-#if __GLIBC__
-    // Note: glibc has a nonstandard strerror_r that returns char* rather than POSIX's int.
+#if defined(__GLIBC__) || defined(__ANDROID__)
+    // Note: glibc and newer Android NDK have a nonstandard strerror_r that returns char* rather than POSIX's int.
     // char *strerror_r(int errnum, char *buf, size_t n);
     return strerror_r(errnum, buf, buflen);
 #else
