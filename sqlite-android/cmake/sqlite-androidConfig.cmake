@@ -39,3 +39,4 @@ endif()
 set(sqlite-android_LIBRARIES sqlite-android::sqlite-android)
 set(sqlite-android_INCLUDE_DIRS)
 
+

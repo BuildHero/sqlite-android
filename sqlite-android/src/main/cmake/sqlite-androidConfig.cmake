@@ -31,14 +31,14 @@ if(NOT sqlite-android_LIBRARY)
 endif()
 
 # Create imported target
-if(NOT TARGET sqlite-android::sqlite-android)
-    add_library(sqlite-android::sqlite-android SHARED IMPORTED)
-    set_target_properties(sqlite-android::sqlite-android PROPERTIES
+if(NOT TARGET sqlite-android::sqlite3x)
+    add_library(sqlite-android::sqlite3x SHARED IMPORTED)
+    set_target_properties(sqlite-android::sqlite3x PROPERTIES
         IMPORTED_LOCATION "${sqlite-android_LIBRARY}"
-        INTERFACE_INCLUDE_DIRECTORIES "${PACKAGE_PREFIX_DIR}/assets"
+        INTERFACE_INCLUDE_DIRECTORIES "${PACKAGE_PREFIX_DIR}/include"
     )
 endif()
 
 # Set variables for consumers
-set(sqlite-android_LIBRARIES sqlite-android::sqlite-android)
-set(sqlite-android_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/assets")
+set(sqlite-android_LIBRARIES sqlite-android::sqlite3x)
+set(sqlite-android_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include")
