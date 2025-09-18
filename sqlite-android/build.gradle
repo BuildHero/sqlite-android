@@ -25,6 +25,10 @@ android {
         }
     }
 
+    buildFeatures {
+        prefab true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -48,9 +52,14 @@ android {
 
     packagingOptions {
         jniLibs {
-            useLegacyPackaging true
+            // Enable 16KB page support by disabling legacy packaging
+            // This ensures proper ELF alignment for 16KB pages
+            useLegacyPackaging false
         }
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libsqlite3x.so'
     }
+
 }
 
 dependencies {
